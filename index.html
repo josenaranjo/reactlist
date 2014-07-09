@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>React List</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://fb.me/react-0.10.0.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.lite.js"></script>
   </head>
   <body class="container-fluid">
     <div class="row">
@@ -19,38 +21,34 @@
     <div class="row">
       <div class="col-lg-3">    
         <p>
+            <h2>Search:</h2>
+            <input id="input" type="text" />
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">    
+        <p>
             <h2>List 1:</h2>
             <div id="list1"></div>
         </p>
       </div>
-      <div class="col-lg-3 col-lg-offset-3">
-        <p>
-            <h2>List 2:</h2>
-            <div id="list2"></div>
-        </p>
-      </div>
     </div>
     <script src="build/ReactList.js"></script>
+    <script src="src/js/RxWikipedia.js"></script>
     <script>
       var data = [
           {id: "123", name: "Item 1", type: "Type 1"},
           {id: "454", name: "Item 2", type: "Type 2"}
       ];
 
-      var data1 = [
-          {id: "765", name: "Item 1", type: "Type 1"},
-          {id: "982", name: "Item 2", type: "Type 2"},
-          {id: "421", name: "Item 3", type: "Type 3"}
-      ];
-         
-      var comp1 = React.renderComponent(
-        ItemListBox( {data:data} ),
-        document.getElementById('list1')
-      );
-      var comp1 = React.renderComponent(
-        ItemListBox( {data:data1} ),
-        document.getElementById('list2')
-      );
+      
+      var component = React.renderComponent(
+					ItemListBox( {data:data} ),
+					document.getElementById('list1')
+			);
+      
+      rxWikipedia(component);
     </script>
   </body>
 </html>

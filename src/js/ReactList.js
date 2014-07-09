@@ -22,6 +22,10 @@ var ItemListBox = React.createClass({
   getInitialState: function() {
     return {data: []};
   },
+	
+	cleanState: function() {
+		this.setState({data: []});
+	},
 
   render: function() {
     return (
