@@ -22,6 +22,10 @@ var ItemListBox = React.createClass({displayName: 'ItemListBox',
   getInitialState: function() {
     return {data: []};
   },
+	
+	cleanState: function() {
+		this.setState({data: []});
+	},
 
   render: function() {
     return (
@@ -66,7 +70,7 @@ var ItemLi = React.createClass({displayName: 'ItemLi',
   
   render: function() {
     return (
-      React.DOM.li( {className:"react-list-item list-group-item", key:"{this.props.data.id}"}, this.props.data.name, " ", React.DOM.a( {onClick:this._deleteFunc, className:"glyphicon glyphicon-remove"}))
+      React.DOM.li( {className:"react-list-item list-group-item"}, this.props.data, " ", React.DOM.a( {onClick:this._deleteFunc, className:"glyphicon glyphicon-remove"}))
     );
   }
 });

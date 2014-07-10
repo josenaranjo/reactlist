@@ -70,7 +70,7 @@ var ItemLi = React.createClass({
   
   render: function() {
     return (
-      <li className="react-list-item list-group-item" key="{this.props.data.id}">{this.props.data.name} <a onClick={this._deleteFunc} className="glyphicon glyphicon-remove"></a></li>
+      <li className="react-list-item list-group-item">{this.props.data} <a onClick={this._deleteFunc} className="glyphicon glyphicon-remove"></a></li>
     );
   }
 });

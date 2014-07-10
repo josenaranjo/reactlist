@@ -1,8 +1,4 @@
-function rxWikipedia(component) {
-	_this = this;
-	
-	var comp1 = component;
-	
+function rxWikipedia() {
 	var input = $('#input'),
 			results = $('#results');
 
@@ -33,20 +29,26 @@ function rxWikipedia(component) {
 			}).promise();
 	}
 
-	var suggestions = distinct.flatMapLatest(searchWikipedia);
+	var suggestions = distinct.flatMapLatest(searchWikipedia);	
 
 	suggestions.subscribe( function (data) {
 			var res = data[1];
 
 			/* Do something with the data like binding */
-			_this.comp1.cleanState();
-
-			$.each(res, function (_, value) {
-					_this.comp1.append(value);
-			});
+			
+			var component = React.renderComponent(
+					ItemListBox( {data:res} ),
+					document.getElementById('list1')
+			);
+		
+//			component.cleanState();
+//
+//			$.each(res, function (_, value) {
+//					component.append(value);
+//			});
 	}, function (error) {
 			/* handle any errors */
-			_this.comp1.cleanState();
-			_this.comp1.append(error);
+			component.cleanState();
+			component.append(error);
 	});
 }
