@@ -1,6 +1,8 @@
-function rxWikipedia() {
+function rxWikipedia(component) {
 	var input = $('#input'),
 			results = $('#results');
+  
+    var comp = component;
 
 	/* Only get the value from each key up */
 	var keyups = Rx.Observable.fromEvent(input, 'keyup')
@@ -35,17 +37,14 @@ function rxWikipedia() {
 			var res = data[1];
 
 			/* Do something with the data like binding */
-			
-			var component = React.renderComponent(
-					ItemListBox( {data:res} ),
-					document.getElementById('list1')
-			);
 		
-//			component.cleanState();
-//
-//			$.each(res, function (_, value) {
-//					component.append(value);
-//			});
+            comp.cleanState();
+
+			$.each(res, function (_, value) {
+              console.log(_);
+              console.log(value);
+					comp.append(value);
+			});
 	}, function (error) {
 			/* handle any errors */
 			component.cleanState();

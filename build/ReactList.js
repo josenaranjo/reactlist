@@ -9,9 +9,7 @@ var ItemListBox = React.createClass({displayName: 'ItemListBox',
   
   append: function(items) {
     var tempData = this.props.data;
-    for(var i = 0; i<items.length; i++) {
-      tempData.push(items[i]);   
-    }
+    tempData.push(items);   
     this.setState({data: tempData});
   },
 
